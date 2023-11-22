@@ -31,7 +31,7 @@
             text-align: center;
         }
 
-        label, input, select {
+        label, input {
             display: block;
         }
 
@@ -46,8 +46,14 @@
             padding: 10px;
             background-color: transparent;
             border: none;
-            border-bottom: 2px solid #888; /* Underline for input fields */
+            border-bottom: 2px solid #888; /* Underline for input fields and drop-down menu */
             color: #fff;
+        }
+
+        select option {
+            background-color: #333; /* Background color for options */
+            color: #fff; /* Text color for options */
+            padding: 10px;
         }
 
         .btn {
@@ -107,9 +113,9 @@
         <label for="no_words">Number of words to generate:</label>
         <input type="number" name="no_words" id="no_words" required>
         <label for="language">Language:</label>
-        <select id="language" name="language" required>
-            <option value="english">English</option>
-            <option value="hindi">Hindi</option>
+        <select name="language" id="language" required>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
         </select>
         <button class="btn" type="submit">
             <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
