@@ -1,13 +1,8 @@
 # flask_app/app.py
-import tensorflow_hub as hub
-import tensorflow as tf
 import numpy as np
 import pickle
 from flask import Flask, render_template, request, jsonify
-from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Embedding, LSTM, Dense
 from tensorflow.keras.models import load_model
 
 
@@ -40,12 +35,12 @@ def generate_sequence():
     prompt = request.form.get('prompt')
     no_words = int(request.form.get('no_words'))
     language = request.form['language']
-    if language == "english":
+    if language == "English":
         sentence = generate_seq_eng(prompt, no_words, english_tokenizer, english_model)
         print(sentence)
         return jsonify({'generated_sequence': sentence, 'no_words': no_words})
     
-    elif language == "hindi":
+    elif language == "Hindi":
         sentence = generate_seq_hindi(hindi_model, hindi_tokenizer, 3, prompt, no_words)
         print(sentence)
         return jsonify({'generated_sequence': sentence, 'no_words': no_words})
