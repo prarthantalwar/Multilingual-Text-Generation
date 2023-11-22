@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Sequence Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         body {
             background-color: #222;
@@ -31,7 +33,8 @@
             text-align: center;
         }
 
-        label, input {
+        label,
+        input {
             display: block;
         }
 
@@ -46,13 +49,16 @@
             padding: 10px;
             background-color: transparent;
             border: none;
-            border-bottom: 2px solid #888; /* Underline for input fields and drop-down menu */
+            border-bottom: 2px solid #888;
+            /* Underline for input fields and drop-down menu */
             color: #fff;
         }
 
         select option {
-            background-color: #333; /* Background color for options */
-            color: #fff; /* Text color for options */
+            background-color: #333;
+            /* Background color for options */
+            color: #fff;
+            /* Text color for options */
             padding: 10px;
         }
 
@@ -85,7 +91,7 @@
         .btn:hover {
             background: linear-gradient(0deg, #A47CF3, #683FEA);
             box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
-            inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2);
+                inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2);
             transform: translateY(-2px);
         }
 
@@ -99,12 +105,27 @@
         }
 
         #generated-sequence {
-            display: none; /* Initially hidden */
+            display: none;
+            /* Initially hidden */
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            /* Adjust the font size as needed */
+            white-space: pre-wrap;
+            /* Preserve whitespace and wrap lines */
+            max-width: 100%;
+            /* Allow the block to expand to the container width */
+        }
+
+        #generated-sequence-title {
+            display: none;
+            /* Initially hidden */
             text-align: center;
             margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
     <h1>Sequence Generator</h1>
     <form id="sequence-form" method="POST" action="/generate">
@@ -118,13 +139,16 @@
             <option value="Hindi">Hindi</option>
         </select>
         <button class="btn" type="submit">
-            <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
-                <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+            <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1"
+                class="sparkle">
+                <path
+                    d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z">
+                </path>
             </svg>
             <span class="text">Generate</span>
         </button>
     </form>
-    <h2>Generated Sequence:</h2>
+    <h2 id="generated-sequence-title">Generated Sequence:</h2>
     <p id="generated-sequence"></p>
 </body>
 
@@ -132,6 +156,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('sequence-form');
         const generatedSequence = document.getElementById('generated-sequence');
+        const generatedSequenceTitle = document.getElementById('generated-sequence-title');
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -144,8 +169,10 @@
                 .then(data => {
                     generatedSequence.style.display = 'block'; // Show the generated sequence
                     generatedSequence.textContent = data.generated_sequence;
+                    generatedSequenceTitle.style.display = 'block'; // Show the title
                 });
         });
     });
 </script>
+
 </html>

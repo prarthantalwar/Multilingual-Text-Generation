@@ -37,12 +37,10 @@ def generate_sequence():
     language = request.form['language']
     if language == "English":
         sentence = generate_seq_eng(prompt, no_words, english_tokenizer, english_model)
-        print(sentence)
         return jsonify({'generated_sequence': sentence, 'no_words': no_words})
     
     elif language == "Hindi":
-        sentence = generate_seq_hindi(hindi_model, hindi_tokenizer, 3, prompt, no_words)
-        print(sentence)
+        sentence = generate_seq_hindi(hindi_model, hindi_tokenizer, 2, prompt, no_words)
         return jsonify({'generated_sequence': sentence, 'no_words': no_words})
     
     return render_template('index.html')
