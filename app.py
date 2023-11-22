@@ -54,8 +54,6 @@ def generate_sequence():
     #     word = next
     # return jsonify({'generated_sequence': sentence, 'no_words': no_words})
 
-
-
 def generate_seq_hindi(model, tokenizer, max_length, seed_text, n_words):
     in_text = seed_text
     # generate a fixed number of words
@@ -78,7 +76,6 @@ def generate_seq_hindi(model, tokenizer, max_length, seed_text, n_words):
         in_text += ' ' + out_word
     return in_text
 
-
 def generate_seq_eng(text, no_words, tokenizer, model):
     for i in range(no_words):
         # tokenize
@@ -93,9 +90,6 @@ def generate_seq_eng(text, no_words, tokenizer, model):
             if index == pos:
                 text = text + " " + word
     return text
-                
-
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, threaded=True)
